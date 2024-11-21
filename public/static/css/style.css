@@ -1,0 +1,824 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&family=Delius+Swash+Caps&display=swap');
+
+body {
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    background-color: rgb(251, 243, 232);
+}
+
+/* Partie header */
+header {
+    position: relative;
+    width: 100%;
+    height: 200px;
+}
+
+.background_image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../cafe_header.png');
+    background-size: 85%;
+    background-position: center 15%;
+    background-repeat: no-repeat;
+    z-index: -1;
+    transform: rotate(180deg);
+}
+
+
+
+.logo-link {
+    pointer-events: none;
+}
+
+.logo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 20px, 8%;
+    margin-left: 4%;
+    height: 12em;
+    pointer-events: all;
+}
+
+.navbar {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 25px;
+    position: flex;
+    margin-top: -9em;
+    margin-bottom: 100px;
+    width: 100%;
+}
+
+.navbar .nav-links .titre {
+    font-family: 'Delius Swash Caps', cursive;
+    font-size: 30px;
+    color: rgb(123, 74, 2);
+    padding-right: 80px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-links {
+    background-image: linear-gradient(to right, rgba(255, 202, 127, 0.442), rgba(186, 98, 50, 0.594));
+    backdrop-filter: blur(3px) contrast(90%);
+    -webkit-backdrop-filter: blur(3px) contrast(90%);
+    border-radius: 30px;
+    height: 90px;
+}
+
+.navbar a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    outline: none;
+    transition: all 0.2s ease;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.navbar .nav-links ul {
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+}
+
+.navbar .nav-links ul li {
+    transition: all 0.2s ease;
+    margin: 25px;
+
+}
+
+.navbar .nav-links ul li:hover {
+    color: white;
+    transform: scale(1.15);
+}
+
+.navbar .nav-links ul a:hover {
+    color: white;
+}
+
+.navbar .nav-links ul li .titre:hover {
+    color: rgb(128, 75, 0);
+    transform: scale(1.15);
+}
+
+.navbar .nav-links ul a .titre:hover {
+    color: rgb(128, 75, 0);
+}
+
+.navbar .menu-hamburger {
+    display: none;
+}
+
+/* Partie présentation */
+.container_presentation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.presentation {
+    background-image: url('../cafe3.png');
+    background-size: cover;
+    border-radius: 40px;
+    width: 98%;
+    height: 500px;
+    margin-top: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
+    display: flex;
+    text-align: center;
+}
+
+.presentation h1 {
+    margin-top: 15px;
+    ;
+}
+
+span {
+    color: rgb(128, 75, 0);
+}
+
+
+
+.presentation_article span {
+    font-weight: 550;
+}
+
+#presentation_left {
+    font-size: 20px;
+    background-color: #dfbc9aba;
+    backdrop-filter: blur(2px);
+    margin: 0px 900px 0px 150px;
+    border-radius: 60px;
+    flex: 1;
+}
+
+.presentation_article {
+    font-size: 22px;
+    padding: 20px;
+    text-align: center;
+}
+
+button {
+    font-size: 20px;
+    height: 40px;
+    margin-bottom: 10px;
+    padding: 0px 40px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(255, 222, 177);
+    box-shadow: 0 4px 8px rgba(100, 35, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    background-color: rgb(255, 199, 121);
+}
+
+button a {
+    text-decoration: none;
+    color: rgb(128, 75, 0);
+    font-weight: 600;
+}
+
+/* Partie nouveauté */
+.nouveaute {
+    background-image: url('../cafe_page.png');
+    background-size: 85%;
+    background-position: center;
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+}
+
+.container_nouveaute {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.container_nouveaute::after {
+    content: '';
+    width: 85%;
+    height: 2.5px;
+    background-color: rgb(148, 99, 24);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 100px;
+}
+
+.container_nouveaute h1 {
+    font-family: 'Delius Swash Caps', cursive;
+    font-size: 2.8rem;
+    color: rgb(148, 99, 24);
+    margin-bottom: 5px;
+}
+
+.container_produits {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 80%;
+    flex-wrap: wrap;
+}
+
+.container_produit {
+    background-color: rgb(252, 235, 219);
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(100, 35, 0, 0.1);
+    width: 30%;
+    box-sizing: border-box;
+    margin: 10px;
+}
+
+.container_produit h2 {
+    color: rgb(145, 85, 0);
+    font-family: "Delius Swash", cursive;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.container_produit img {
+    margin: auto;
+    margin-bottom: 20px;
+    width: 80%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.container_produit .prix {
+    color: rgb(132, 77, 0);
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.container_produits-full {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 80%;
+    flex-wrap: wrap;
+}
+
+/** Page de liste de produit */
+/* Partie liste déroulante */
+.catalogue {
+    background-image: url('../cafe_page.png');
+    background-size: 75%;
+}
+
+.catalogue_titre {
+    background-image: url('../cafe2.png');
+    background-size: cover;
+    background-position: center center;
+    width: 98%;
+    height: 400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(255, 234, 216);
+    text-align: center;
+    border-radius: 40px;
+    box-shadow: 0 4px 8px rgba(247, 152, 80, 0.3);
+    position: relative;
+}
+
+.catalogue_titre h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+}
+
+.produits {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 50px;
+}
+
+.categories {
+    padding: 40px 0px 40px 60px;
+    position: relative;
+    display: inline-block;
+}
+
+.categories button {
+    font-weight: 550;
+    padding: 0px 15px;
+    color: rgb(108, 63, 0);
+}
+
+.categorie {
+    display: none;
+    position: absolute;
+    background-color: rgba(245, 211, 163, 0.766);
+    min-width: 160px;
+    box-shadow: 0 4px 8px rgba(100, 35, 0, 0.1);
+    z-index: 1;
+    border-radius: 5px;
+    backdrop-filter: blur(8px);
+}
+
+
+fieldset {
+    border: none;
+}
+
+
+.categorie label:hover {
+    background-color: rgb(244, 206, 152);
+}
+
+.categories:hover .categorie {
+    display: block;
+    margin-left: 120px;
+}
+
+#voir-tous-btn {
+    font-size: 18px;
+    font-weight: 550;
+    padding: 0px 15px;
+    color: rgb(108, 63, 0);
+}
+
+/** Page de détail de produit */
+.detail_background {
+    background-image: url('../cafe_page.png');
+    background-size: 85%;
+    background-position: center;
+}
+
+.product-description {
+    width: 80%;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: rgb(252, 235, 219);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(100, 35, 0, 0.1);
+    text-align: center;
+}
+
+.product-description .image {
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.product-description .image img {
+    width: 100%;
+    max-height: 30em;
+    object-fit: cover;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(100, 35, 0, 0.1);
+}
+
+.product-description .description {
+    text-align: left;
+    padding: 10px;
+}
+
+.product-description h2 {
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: rgb(145, 85, 0);
+    font-weight: bold;
+}
+
+.product-description ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.product-description .product-date {
+    display: flex;
+    justify-content: right;
+    top: 10px;
+    right: 10px;
+    font-size: 0.9rem;
+    color: #666;
+    z-index: 3;
+}
+
+.product-description li {
+    font-size: 1.4rem;
+    line-height: 1.2;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.product-description li strong {
+    color: rgb(145, 85, 0);
+    font-weight: bold;
+}
+
+/** Page A propo de nous */
+
+.about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.about .proprio_image {
+    margin-left: 50px;
+    margin-bottom: 200px;
+}
+
+.about .proprio_image img {
+    width: 80%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.about_text {
+    max-width: 600px;
+    margin-right: 100px;
+    margin-bottom: 50px;
+    text-align: left;
+}
+
+.about_text h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #703607;
+}
+
+.about_text p {
+    font-size: 1.1rem;
+    color: #333;
+}
+
+/** Page 404 */
+
+.not_found-text {
+    max-width: 600px;
+    margin-right: 100px;
+    margin-bottom: 300px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.not_found-text h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #703607;
+}
+
+.not_found-text p {
+    font-size: 1.1rem;
+    color: #333;
+}
+
+/** Page de contact */
+#map {
+    width: 100%;
+    max-width: 70em;
+    height: 70vh;
+    margin-left: 3vw;
+    border-radius: 40px;
+}
+
+.contact {
+    width: 80%;
+    background-color: rgb(252, 235, 219);
+    box-shadow: 0 4px 8px rgba(100, 35, 0, 0.1);
+    padding: 50px 10px 50px 10px;
+    margin-right: 100px;
+    margin-left: 100px;
+    text-align: left;
+    border-radius: 30px;
+}
+
+.contact h1 {
+    font-family: 'Delius Swash Caps', cursive;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #703607;
+}
+
+.contact ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact li {
+    font-size: 1.4rem;
+    line-height: 1.2;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.contact li:hover {
+    transform: scale(1.1);
+}
+
+.contact li strong {
+    color: rgb(145, 85, 0);
+    font-weight: bold;
+}
+
+
+
+/** Partie footer */
+footer {
+    background-color: #6c4c47;
+    color: #f5f5f5;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    padding-bottom: 10px;
+}
+
+.footer_nav {
+    padding-top: 15px;
+    width: 100%;
+    height: 50%;
+    margin-bottom: 5px;
+}
+
+.footer_separator {
+    width: 80%;
+    max-width: 1200px;
+    height: 2px;
+    background-color: #875e58;
+    margin: 5px auto;
+}
+
+.footer_nav a {
+    color: #f5f5f5;
+    text-decoration: none;
+    margin-left: 20px;
+    transition: all 0.2s ease;
+    display: inline-block;
+    text-align: center;
+}
+
+.footer_nav a:hover {
+    transform: scale(1.1);
+}
+
+footer p {
+    font-size: 1rem;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+@media screen and (max-width: 1500px) {
+    #presentation_left {
+        margin: 0px 250px 0px 250px;
+
+    }
+
+    /** Page de détail de produit */
+    .product-description .image {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .navbar a {
+        font-size: 18px;
+        font-weight: 600;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+
+    /* Partie header */
+    .background_image {
+        top: -50px;
+    }
+
+    .logo {
+        justify-content: center;
+        width: 100%;
+        height: 10em;
+    }
+
+    .navbar {
+        background-color: rgba(255, 255, 255, 0);
+        padding: zero;
+        position: absolute;
+    }
+
+    .navbar .menu-hamburger {
+        top: 20px;
+        right: 40px;
+        display: inline;
+        width: 25px;
+        position: fixed;
+        z-index: 1;
+        filter: sepia(100%) saturate(200%) hue-rotate(-10deg);
+    }
+
+    .nav-links {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        margin-top: -368%;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.5s ease;
+        flex-direction: column;
+
+    }
+
+    .nav-links.mobile-menu {
+        text-align: center;
+        margin-top: 0;
+        position: fixed;
+        z-index: 1;
+
+    }
+
+    .nav-links ul {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+    }
+
+    .navbar .nav-links ul li {
+        margin: 25px 0;
+        font-size: 1.3em;
+    }
+
+    .navbar .nav-links .titre {
+        color: rgb(123, 74, 2);
+        padding: 0;
+        text-align: center;
+    }
+
+    /* Partie présentation */
+    .container_presentation {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .presentation {
+        margin-top: 0px;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+    }
+
+    #presentation_left {
+        font-size: 18px;
+        margin: 15px;
+    }
+
+    .presentation_article {
+        font-size: 18px;
+        padding: 15px;
+    }
+
+    /* Partie nouveauté */
+    .nouveaute {
+        background-size: 115%;
+    }
+
+    .container_nouveaute h1 {
+        font-size: 2.3rem;
+    }
+
+    .container_produit {
+        width: 60%;
+    }
+
+    /** Page de liste de produit */
+    .catalogue {
+        background-size: 110%;
+        background-position: center;
+    }
+
+    .catalogue_titre {
+        width: 80%;
+    }
+
+    /** Page de détail de produit */
+    .product-description {
+        margin-top: 0px;
+    }
+
+    .product-description .image {
+        width: 100%;
+    }
+
+    .product-description li {
+        font-size: 1.2rem;
+    }
+
+    /** Page A propo de nous */
+    .about {
+        flex-wrap: wrap;
+    }
+
+    .about .proprio_image {
+        margin-bottom: 20px;
+    }
+
+    .about_text {
+        margin: 0px 30px 0px 30px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .about_text h1 {
+        font-size: 1.8rem;
+    }
+
+    .about_text p {
+        font-size: 1rem;
+    }
+
+    /** Page 404 */
+    .not_found-text {
+        margin: 0px 30px 0px 30px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .not_found-text h1 {
+        font-size: 1.8rem;
+    }
+
+    .not_found-text p {
+        font-size: 1rem;
+    }
+
+    /** Page de contact */
+    #map {
+        width: 100%;
+        max-width: 60em;
+        height: 60vh;
+        margin: auto;
+    }
+}
+
+
+@media screen and (max-width: 800px) {
+    .background_image {
+        top: -110px;
+        left: -30px;
+        width: 110%;
+    }
+
+
+    .logo {
+        height: 10em;
+    }
+
+    /* Partie nouveauté */
+    .container_produit {
+        width: 100%;
+    }
+
+    /** Page de liste de produit */
+    .catalogue_titre {
+        width: 95%;
+    }
+
+    /** Page de contact */
+    #map {
+        width: 100%;
+        max-width: 40em;
+        height: 40vh;
+        margin: 20px;
+    }
+
+    .contact {
+        margin: auto;
+    }
+}

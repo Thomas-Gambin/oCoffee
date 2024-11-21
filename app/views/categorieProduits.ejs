@@ -1,0 +1,43 @@
+<%- include ('partials/header'); %>
+    <main>
+        <section class="catalogue_titre">
+            <h1>Notre Catalogue</h1>
+        </section>
+        <section class="catalogue">
+            <aside class="categories">
+                <h3>Séléctionner une <button>catégorie</button></h3>
+                <form class="categorie" action="/produits" method="GET">
+                    <fieldset>
+                        <legend>Choisir une catégorie</legend>
+                        <% allCategories.forEach(category=> { %>
+                            <label>
+                                <input type="radio" name="category" value="<%= category.category %>">
+                                <%= category.category%>
+                            </label><br>
+                            <% }) %>
+                    </fieldset>
+                    <button type="submit">Valider</button>
+                </form>
+            </aside>
+            <section class="produits">
+                <div class="container_produits">
+                    <% coffeeCategory.forEach(coffee=> { %>
+                        <article class="container_produit">
+                            <h2>
+                                <%= coffee.name %>
+                            </h2>
+                            <img src="/static/00.assets/coffees/<%= coffee.reference %>.png" alt="<%= coffee.name %>">
+                            <p>
+                                <%= coffee.description %>
+                            </p>
+                            <div class="prix">
+                                <%= coffee.price %>
+                            </div>
+                            <button><a href="/produit/<%= coffee.id %>">Découvrir</a></button>
+                        </article>
+                        <% }) %>
+                </div>
+            </section>
+        </section>
+    </main>
+    <%- include ('partials/footer'); %>

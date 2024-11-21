@@ -1,0 +1,43 @@
+<%- include ('partials/header'); %>
+    <main>
+        <section class="presentation">
+            <div class="container_presentation">
+                <div id="presentation_left">
+                    <h1>Bienvenue sur <span>O'Coffee</span></h1>
+                    <article class="presentation_article">Plongez dans <span>l'univers envoûtant</span> de notre
+                        boutique de café, un véritable <span>havre de paix</span> où chaque tasse est une
+                        <span>invitation à découvrir</span> des <span>saveurs uniques</span>. Fondée par Jean et Jacques
+                        Pepper, deux frères <span>passionnés</span>, notre boutique célèbre <span>l'art du café</span>
+                        dans une <span>ambiance chaleureuse et raffinée</span>. Dès que vous franchissez notre porte,
+                        vous êtes accueilli par une <span>symphonie d'arômes envoûtants</span> qui <span>éveilleront
+                            tous vos sens</span>.
+                    </article>
+                    <button><a href="/produits">Voir le catalogue</a></button>
+                </div>
+            </div>
+        </section>
+        <section class="nouveaute">
+            <div class="container_nouveaute">
+                <h1>Nos dernières saveurs</h1>
+            </div>
+            <div class="container_produits">
+                <% coffees.forEach(coffee=> { %>
+                    <div class="container_produit">
+                        <h2>
+                            <%= coffee.name %>
+                        </h2>
+                        <img src="/static/00.assets/coffees/<%= coffee.reference %>.png" alt="<%= coffee.name %>">
+                        <p>
+                            <%= coffee.description %>
+                        </p>
+                        <div class="prix">
+                            <%= coffee.price %>
+                        </div>
+                        <button><a href="/produit/<%= coffee.id %>">Découvrir</a></button>
+                    </div>
+                    <% }) %>
+            </div>
+        </section>
+
+    </main>
+    <%- include ('partials/footer'); %>

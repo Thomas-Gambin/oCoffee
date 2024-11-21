@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>o'Coffee</title>
+    <link rel="icon" href="../public/static/00.assets/logo.svg" type="image/svg">
+    <!-- Custom styles for this template -->
+    <link href="../public/static/css/style.css" rel="stylesheet">
+    <link href="../public/static/css/reset.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <header>
+        <a href="./index.html">
+            <img src="../public/static/00.assets/logo.svg" alt="oCofee Logo" class="logo" </a>
+            <nav class="navbar">
+                <div class="nav-links">
+                    <ul>
+                        <li><a href="./index.html" class="titre">O'Coffee</a></li>
+                        <li><a href="./index.html">Accueil</a></li>
+                        <li><a href="./produits.html">Notre catalogue</a></li>
+                        <li><a href="./about.html">A propos</a></li>
+                    </ul>
+                </div>
+                <img src="../public/static/00.assets/humberger.png" alt="menu-deroulant" class="menu-hamburger">
+            </nav>
+    </header>
+    <main>
+        <section class="catalogue_titre">
+            <h1>Notre Catalogue</h1>
+        </section>
+        <section class="catalogue">
+            <aside class="categories">
+                <h3>Séléctionner une <button>catégories</button></h3>
+                <form class="categorie" action="#" method="GET">
+                    <fieldset>
+                        <legend>Choisir une catégorie</legend>
+                        <label>
+                            <input type="radio" name="category" value="Acide">
+                            Acide
+                        </label><br>
+                        <label>
+                            <input type="radio" name="category" value="Chocolaté">
+                            Chocolaté
+                        </label><br>
+                        <label>
+                            <input type="radio" name="category" value="Corsé">
+                            Corsé
+                        </label><br>
+                        <label>
+                            <input type="radio" name="category" value="Doux">
+                            Doux
+                        </label><br>
+                        <label>
+                            <input type="radio" name="category" value="Épicé">
+                            Épicé
+                        </label><br>
+                        <label>
+                            <input type="radio" name="category" value="Fruité">
+                            Fruité
+                        </label><br>
+                    </fieldset>
+                    <button type="submit">Valider</button>
+                </form>
+            </aside>
+            <button id="voir-tous-btn">Tous voir</button>
+            <section class="produits">
+                <div class="container_produits">
+                    <article class="container_produit">
+                        <h2>Espresso</h2>
+                        <img src="../public/static/00.assets/coffees/100955890.png" alt="Espresso">
+                        <p>Café fort et concentré préparé en faisant passer de l'eau chaude à travers du café finement
+                            moulu.</p>
+                        <div class="prix">20.99 €</div>
+                        <button><a href="./detail.html">Découvrir</a></button>
+                    </article>
+                    <article class="container_produit">
+                        <h2>Columbian</h2>
+                        <img src="../public/static/00.assets/coffees/100955894.png" alt="Columbian">
+                        <p>Café moyennement corsé avec une acidité vive et une saveur riche.</p>
+                        <div class="prix">18.75 €</div>
+                        <button><a href="./detail.html">Découvrir</a></button>
+                    </article>
+                    <article class="container_produit">
+                        <h2>Ethiopian Yirgacheffe</h2>
+                        <img src="../public/static/00.assets/coffees/105589090.png" alt="Ethiopian Yirgacheffe">
+                        <p>Réputé pour son arôme floral, son acidité vive et ses notes de saveur citronnée.</p>
+                        <div class="prix">22.50 €</div>
+                        <button><a href="./detail.html">Découvrir</a></button>
+                    </article>
+                    <!-- Autres produits cachés par défaut -->
+                    <article class="container_produit tous-produits">
+                        <h2>Brazilian Santos</h2>
+                        <img src="../public/static/00.assets/coffees/134009550.png" alt="Brazilian Santos">
+                        <p>Café doux et lisse avec un profil de saveur de noisette.</p>
+                        <div class="prix">17.80 €</div>
+                        <button><a href="./detail.html">Découvrir</a></button>
+                    </article>
+                    <article class="container_produit tous-produits">
+                        <h2>Guatemalan Antigua</h2>
+                        <img src="../public/static/00.assets/coffees/256505890.png" alt="Guatemalan Antigua">
+                        <p>Café corsé avec des nuances chocolatées et une pointe d'épice.</p>
+                        <div class="prix">21.25 €</div>
+                        <button><a href="./detail.html">Découvrir</a></button>
+                    </article>
+                    <article class="container_produit tous-produits">
+                        <h2>Kenyan AA</h2>
+                        <img src="../public/static/00.assets/coffees/295432730.png" alt="Kenyan AA">
+                        <p>Café complexe connu pour son acidité rappelant le vin et ses saveurs fruitées.</p>
+                        <div class="prix">23.70 €</div>
+                        <button><a href="./detail.html">Découvrir</a></button>
+                    </article>
+                    <article class="container_produit tous-produits">
+                        <h2>Sumatra Mandheling</h2>
+                        <img src="../public/static/00.assets/coffees/302932754.png" alt="Sumatra Mandheling">
+                        <p>Café profond et terreux avec un corps lourd et une faible acidité</p>
+                        <div class="prix">19.95 €</div>
+                        <button><a href="./detail.html">Découvrir</a></button>
+                    </article>
+                    <article class="container_produit tous-produits">
+                        <h2>Costa Rican Tarrazu</h2>
+                        <img src="../public/static/00.assets/coffees/327302954.png" alt="Costa Rican Tarrazu">
+                        <p>Café vif et net avec une finition propre et une acidité vive.</p>
+                        <div class="prix">24.50 €</div>
+                        <button><a href="./detail.html">Découvrir</a></button>
+                    </article>
+                    <article class="container_produit tous-produits">
+                        <h2>Vietnamese Robusta</h2>
+                        <img src="../public/static/00.assets/coffees/549549090.png" alt="Vietnamese Robusta">
+                        <p>Café audacieux et fort avec une saveur robuste distinctive.</p>
+                        <div class="prix">16.75 €</div>
+                        <button><a href="./detail.html">Découvrir</a></button>
+                    </article>
+                    <article class="container_produit tous-produits">
+                        <h2>Tanzanian Peaberry</h2>
+                        <img src="../public/static/00.assets/coffees/582954954.png" alt="Tanzanian Peaberry">
+                        <p>Acidité vive avec un profil de saveur rappelant le vin et un corps moyen.</p>
+                        <div class="prix">26.80 €</div>
+                        <button><a href="./detail.html">Découvrir</a></button>
+                    </article>
+                    <article class="container_produit tous-produits">
+                        <h2>Jamaican Blue Mountain</h2>
+                        <img src="../public/static/00.assets/coffees/589100954.png" alt="Jamaican Blue Mountain">
+                        <p>Reconnu pour sa saveur douce, son acidité vive et son absence d'amertume.</p>
+                        <div class="prix">39.25 €</div>
+                        <button><a href="./detail.html">Découvrir</a></button>
+                    </article>
+                    <article class="container_produit tous-produits">
+                        <h2>Rwandan Bourbon</h2>
+                        <img src="../public/static/00.assets/coffees/650753915.png" alt="Rwandan Bourbon">
+                        <p>Café avec des notes florales prononcées, une acidité vive et un corps moyen.</p>
+                        <div class="prix">21.90 €</div>
+                        <button><a href="./detail.html">Découvrir</a></button>
+                    </article>
+                    <article class="container_produit tous-produits">
+                        <h2>Panamanian Geisha</h2>
+                        <img src="../public/static/00.assets/coffees/795501340.png" alt="Panamanian Geisha">
+                        <p>Café rare aux arômes floraux complexes, une acidité brillante et un profil de saveur
+                            distinctif.</p>
+                        <div class="prix">42.00 €</div>
+                        <button><a href="./detail.html">Découvrir</a></button>
+                    </article>
+                    <article class="container_produit tous-produits">
+                        <h2>Peruvian Arabica</h2>
+                        <img src="../public/static/00.assets/coffees/954589100.png" alt="Peruvian Arabica">
+                        <p>Café équilibré avec des notes de chocolat, une acidité modérée et un corps velouté.</p>
+                        <div class="prix">19.40 €</div>
+                        <button><a href="./detail.html">Découvrir</a></button>
+                    </article>
+                    <article class="container_produit tous-produits">
+                        <h2>Hawaiian Kona</h2>
+                        <img src="../public/static/00.assets/coffees/958090105.png" alt="Hawaiian Kona">
+                        <p>Café rare au goût riche, une acidité douce et des nuances subtiles.</p>
+                        <div class="prix">55.75 €</div>
+                        <button><a href="./detail.html">Découvrir</a></button>
+                    </article>
+                    <article class="container_produit tous-produits">
+                        <h2>Nicaraguan Maragogipe</h2>
+                        <img src="../public/static/00.assets/coffees/691550753.png" alt="Nicaraguan Maragogipe">
+                        <p>Café avec des notes de fruits, une acidité vive et un corps plein.</p>
+                        <div class="prix">28.60 €</div>
+                        <button><a href="./detail.html">Découvrir</a></button>
+                    </article>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <footer>
+        <p>© O'Coffee - All right reserved</p>
+        <script src="../public/js/script.js"></script>
+    </footer>
+</body>

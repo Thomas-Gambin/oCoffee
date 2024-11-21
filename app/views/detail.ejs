@@ -1,0 +1,38 @@
+<%- include ('partials/header'); %>
+    <main>
+        <div class="detail_background">
+            <section class="product-description">
+                <div class="product-date">Produit ajouté le 24/01/1998</div>
+                <div class="image">
+                    <img src="/static/00.assets/coffees/<%= coffee.reference %>.png" alt="<%= coffee.name %>">
+                </div>
+                <div class="description">
+                    <h2>
+                        <%= coffee.name %>
+                    </h2>
+                    <ul>
+                        <li><strong>Description :</strong>
+                            <%= coffee.description %>
+                        </li>
+                        <li><strong>Origine :</strong>
+                            <%= coffee.origin %>
+                        </li>
+                        <li><strong>Prix au kilo :</strong>
+                            <%= coffee.price %> €
+                        </li>
+                        <li><strong>Caractéristique principale :</strong>
+                            <%= coffee.category %>
+                        </li>
+                        <li><strong>Disponible :</strong>
+                            <% if (coffee.available===true) { %>
+                                <strong><span style="color: #0a5d11;">Oui ✅</span></strong>
+                                <% } else { %>
+                                    <strong><span style="color: #b30000;">Non ❌</span></strong>
+                                    <% } %>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </main>
+    <%- include ('partials/footer'); %>
