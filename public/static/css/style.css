@@ -342,6 +342,10 @@ button a {
     backdrop-filter: blur(8px);
 }
 
+.categorie button {
+    margin-left: 40px;
+}
+
 
 fieldset {
     border: none;
@@ -504,6 +508,7 @@ fieldset {
     height: 70vh;
     margin-left: 3vw;
     border-radius: 40px;
+    z-index: -1;
 }
 
 .contact {
@@ -535,10 +540,6 @@ fieldset {
     line-height: 1.2;
     color: #333;
     margin-bottom: 10px;
-}
-
-.contact li:hover {
-    transform: scale(1.1);
 }
 
 .contact li strong {
@@ -592,8 +593,12 @@ footer p {
 }
 
 @media screen and (max-width: 1500px) {
+    .presentation {
+        margin: auto;
+    }
+
     #presentation_left {
-        margin: 0px 250px 0px 250px;
+        margin: 0px 620px 0px 50px;
 
     }
 
@@ -608,6 +613,11 @@ footer p {
         font-size: 18px;
         font-weight: 600;
     }
+
+    #presentation_left {
+        margin: 0px 250px 0px 250px;
+
+    }
 }
 
 @media screen and (max-width: 1100px) {
@@ -621,7 +631,11 @@ footer p {
         justify-content: center;
         width: 100%;
         height: 10em;
+        padding-left: 40%;
+        padding-right: 40%;
+        z-index: 1;
     }
+
 
     .navbar {
         background-color: rgba(255, 255, 255, 0);
@@ -740,15 +754,27 @@ footer p {
 
     /** Page A propo de nous */
     .about {
+        display: flex;
         flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
     }
 
     .about .proprio_image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
         margin-bottom: 20px;
     }
 
+    .about .proprio_image img {
+        max-width: 60%;
+    }
+
     .about_text {
-        margin: 0px 30px 0px 30px;
+        margin: 0px 30px 20px 30px;
         justify-content: center;
         align-items: center;
         text-align: center;
@@ -764,7 +790,7 @@ footer p {
 
     /** Page 404 */
     .not_found-text {
-        margin: 0px 30px 0px 30px;
+        margin: 0px 30px 20px 30px;
         justify-content: center;
         align-items: center;
         text-align: center;
@@ -785,6 +811,21 @@ footer p {
         height: 60vh;
         margin: auto;
     }
+
+    .article_contact {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .contact {
+        width: 90%;
+        padding: 50px 100px;
+        margin-top: 20px;
+        margin-right: 0px;
+        margin-left: 0px;
+        box-sizing: border-box;
+    }
 }
 
 
@@ -798,6 +839,8 @@ footer p {
 
     .logo {
         height: 10em;
+        padding-left: 40%;
+        padding-right: 40%;
     }
 
     /* Partie nouveauté */
@@ -819,6 +862,32 @@ footer p {
     }
 
     .contact {
-        margin: auto;
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0px 100px 20px 100px;
+    }
+
+    .contact h1 {
+        text-align: center;
+    }
+
+    .contact li strong {
+        font-size: 22px;
+    }
+
+    .contact li {
+        font-size: 18px;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .logo {
+        height: 10em;
+        padding-left: 35%;
+        padding-right: 35%;
     }
 }
