@@ -3,6 +3,7 @@
 body {
     font-family: 'Open Sans', Arial, Helvetica, sans-serif;
     background-color: rgb(251, 243, 232);
+    overflow-x: hidden;
 }
 
 /* Partie header */
