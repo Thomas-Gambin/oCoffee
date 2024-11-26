@@ -589,7 +589,7 @@ footer {
 footer p {
     font-size: 1rem;
     margin: 0;
-    letter-spacing: 1px;
+    text-align: center;
 }
 
 @media screen and (max-width: 1500px) {
@@ -671,7 +671,7 @@ footer p {
     .nav-links.mobile-menu {
         text-align: center;
         margin-top: 0;
-        position: static;
+        position: fixed;
         z-index: 1;
 
     }
