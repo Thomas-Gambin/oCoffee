@@ -288,9 +288,10 @@ button a {
 }
 
 .catalogue_titre {
-    background-image: url('../cafe2.png');
+    background-image: url('../cafe2.webp');
     background-size: cover;
     background-position: center center;
+    background-color: #d4a374;
     width: 98%;
     height: 400px;
     margin: 0 auto;
