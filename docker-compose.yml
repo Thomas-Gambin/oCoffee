@@ -4,16 +4,16 @@ services:
     image: postgres:16-alpine
     container_name: ocoffee-db
     environment:
-      POSTGRES_USER: ${POSTGRES_USER:-ocoffee}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ocoffee123}
-      POSTGRES_DB: ${POSTGRES_DB:-ocoffee}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     ports:
       - "${POSTGRES_PORT:-5432}:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./create_db.sql:/docker-entrypoint-initdb.d/init.sql
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-ocoffee}"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -28,7 +28,7 @@ services:
     container_name: ocoffee-app
     environment:
       PORT: ${PORT:-3000}
-      PG_URL: postgresql://${POSTGRES_USER:-ocoffee}:${POSTGRES_PASSWORD:-ocoffee123}@postgres:5432/${POSTGRES_DB:-ocoffee}
+      PG_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
     ports:
       - "${PORT:-3000}:3000"
     depends_on:

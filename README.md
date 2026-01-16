@@ -32,26 +32,46 @@ Le projet est maintenant dockerisé et peut être lancé facilement avec Docker 
 
 ### Installation et lancement :
 
-1. **Créer un fichier `.env`** à la racine du projet avec les variables suivantes :
-```env
-PORT=3000
-POSTGRES_USER=ocoffee
-POSTGRES_PASSWORD=ocoffee123
-POSTGRES_DB=ocoffee
-POSTGRES_PORT=5432
-ADMINER_PORT=8080
-```
+1. **Créer un fichier `.env`** à la racine du projet (⚠️ **OBLIGATOIRE** - les secrets ne sont plus en dur) :
+
+   Copiez le fichier `env.example` et renommez-le en `.env`, puis modifiez les valeurs :
+   
+   ```bash
+   cp env.example .env
+   ```
+   
+   Ou créez manuellement le fichier `.env` avec les variables ci-dessous.
+
+   **Variables obligatoires à configurer dans `.env`** :
+   ```env
+   # Configuration de l'application
+   PORT=3000
+
+   # Configuration PostgreSQL (OBLIGATOIRE - utilisez des mots de passe sécurisés !)
+   POSTGRES_USER=ocoffee
+   POSTGRES_PASSWORD=votre_mot_de_passe_securise_ici
+   POSTGRES_DB=ocoffee
+   POSTGRES_PORT=5432
+
+   # Configuration Adminer (optionnel, uniquement pour docker-compose.local.yml)
+   ADMINER_PORT=8080
+   ```
+
+   ⚠️ **Sécurité** : 
+   - Ne commitez **JAMAIS** le fichier `.env` (il est déjà dans `.gitignore`)
+   - Utilisez des mots de passe forts et uniques
+   - En production, utilisez un gestionnaire de secrets (Docker Secrets, Kubernetes Secrets, etc.)
 
 2. **Lancer les conteneurs** :
 
    - **Pour le développement local (avec Adminer)** :
    ```bash
-   docker-compose -f docker-compose.local.yml up -d
+   docker compose -f docker-compose.local.yml up -d
    ```
 
    - **Pour la production** :
    ```bash
-   docker-compose up -d
+   docker compose up -d
    ```
 
 3. **Accéder aux services** :
@@ -68,22 +88,22 @@ ADMINER_PORT=8080
 
 - **Arrêter les conteneurs (local)** :
 ```bash
-docker-compose -f docker-compose.local.yml down
+docker compose -f docker-compose.local.yml down
 ```
 
 - **Voir les logs (local)** :
 ```bash
-docker-compose -f docker-compose.local.yml logs -f
+docker compose -f docker-compose.local.yml logs -f
 ```
 
 - **Reconstruire les images (local)** :
 ```bash
-docker-compose -f docker-compose.local.yml up -d --build
+docker compose -f docker-compose.local.yml up -d --build
 ```
 
 - **Supprimer les volumes (base de données)** :
 ```bash
-docker-compose -f docker-compose.local.yml down -v
+docker compose -f docker-compose.local.yml down -v
 ```
 
 ### Fichiers Docker Compose :
