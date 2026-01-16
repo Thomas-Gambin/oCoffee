@@ -21,3 +21,99 @@ Voici comment j'ai organisé mon travail sur ce projet :
 ## Objectif :
 
 L'objectif de ce projet était de mettre en pratique toutes les compétences acquises durant les deux premiers mois de formation, afin de créer de A à Z, en totale autonomie, un petit projet fonctionnel avec des contraintes imposées par le client fictif, telles que la mise en page et le thème visuel du site.
+
+## Dockerisation :
+
+Le projet est maintenant dockerisé et peut être lancé facilement avec Docker Compose.
+
+### Prérequis :
+- Docker
+- Docker Compose
+
+### Installation et lancement :
+
+1. **Créer un fichier `.env`** à la racine du projet avec les variables suivantes :
+```env
+PORT=3000
+POSTGRES_USER=ocoffee
+POSTGRES_PASSWORD=ocoffee123
+POSTGRES_DB=ocoffee
+POSTGRES_PORT=5432
+ADMINER_PORT=8080
+```
+
+2. **Lancer les conteneurs** :
+
+   - **Pour le développement local (avec Adminer)** :
+   ```bash
+   docker-compose -f docker-compose.local.yml up -d
+   ```
+
+   - **Pour la production** :
+   ```bash
+   docker-compose up -d
+   ```
+
+3. **Accéder aux services** :
+   - Application : http://localhost:3000
+   - Base de données PostgreSQL : localhost:5432
+   - Adminer (local uniquement) : http://localhost:8080
+     - Système : PostgreSQL
+     - Serveur : postgres
+     - Utilisateur : (valeur de POSTGRES_USER dans .env)
+     - Mot de passe : (valeur de POSTGRES_PASSWORD dans .env)
+     - Base de données : (valeur de POSTGRES_DB dans .env)
+
+### Commandes utiles :
+
+- **Arrêter les conteneurs (local)** :
+```bash
+docker-compose -f docker-compose.local.yml down
+```
+
+- **Voir les logs (local)** :
+```bash
+docker-compose -f docker-compose.local.yml logs -f
+```
+
+- **Reconstruire les images (local)** :
+```bash
+docker-compose -f docker-compose.local.yml up -d --build
+```
+
+- **Supprimer les volumes (base de données)** :
+```bash
+docker-compose -f docker-compose.local.yml down -v
+```
+
+### Fichiers Docker Compose :
+
+- **`docker-compose.yml`** : Configuration pour la production (sans Adminer)
+- **`docker-compose.local.yml`** : Configuration pour le développement local (avec Adminer)
+
+## CI/CD avec GitHub Actions :
+
+Le projet inclut des workflows GitHub Actions pour automatiser les tests et le déploiement.
+
+### Workflows disponibles :
+
+1. **`.github/workflows/ci.yml`** : Pipeline CI/CD
+   - **Lint & Test** : Vérifie la syntaxe et exécute les tests
+   - **Build Docker Image** : Construit l'image Docker et la push vers GitHub Container Registry
+   - **Test Docker Compose** : Teste l'application avec Docker Compose
+
+2. **`.github/workflows/deploy.yml`** : Déploiement automatique
+   - Se déclenche sur les push vers `main`/`master` ou les tags `v*`
+   - Build et push l'image Docker vers GitHub Container Registry
+
+### Déclencheurs :
+
+- **Push** sur les branches `main`, `master`, `dev` → Exécute le pipeline CI
+- **Pull Request** sur `main`, `master`, `dev` → Exécute le pipeline CI (sans push d'image)
+- **Push** sur `main`/`master` ou **tag** `v*` → Déploiement automatique
+
+### Images Docker :
+
+Les images sont automatiquement publiées sur **GitHub Container Registry** (`ghcr.io`) :
+- Format : `ghcr.io/<votre-username>/<nom-du-repo>:<tag>`
+- Tags disponibles : `latest`, `main`, `dev`, `sha-<commit>`, etc.

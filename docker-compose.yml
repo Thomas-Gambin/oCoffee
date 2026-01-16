@@ -1,0 +1,49 @@
+services:
+  # Service PostgreSQL
+  postgres:
+    image: postgres:16-alpine
+    container_name: ocoffee-db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-ocoffee}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ocoffee123}
+      POSTGRES_DB: ${POSTGRES_DB:-ocoffee}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./create_db.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-ocoffee}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - ocoffee-network
+
+  # Service Application Node.js
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ocoffee-app
+    environment:
+      PORT: ${PORT:-3000}
+      PG_URL: postgresql://${POSTGRES_USER:-ocoffee}:${POSTGRES_PASSWORD:-ocoffee123}@postgres:5432/${POSTGRES_DB:-ocoffee}
+    ports:
+      - "${PORT:-3000}:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./public:/app/public
+      - ./app/views:/app/app/views
+    networks:
+      - ocoffee-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+
+networks:
+  ocoffee-network:
+    driver: bridge
