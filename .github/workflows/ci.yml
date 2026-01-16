@@ -102,9 +102,20 @@ jobs:
           cache-to: type=gha,mode=max
 
       - name: Start PostgreSQL with Docker Compose
+        env:
+          PORT: 3000
+          POSTGRES_USER: ocoffee
+          POSTGRES_PASSWORD: ocoffee123
+          POSTGRES_DB: ocoffee
+          POSTGRES_PORT: 5432
         run: |
-          docker compose -f docker-compose.yml up -d postgres
-          sleep 10
+          # Lancer PostgreSQL avec les variables d'environnement
+          POSTGRES_USER=ocoffee POSTGRES_PASSWORD=ocoffee123 POSTGRES_DB=ocoffee docker compose -f docker-compose.yml up -d postgres
+          sleep 15
+          
+          # Vérifier que PostgreSQL est prêt
+          docker compose -f docker-compose.yml ps
+          docker logs ocoffee-db || true
 
       - name: Test application container
         env:
@@ -112,23 +123,65 @@ jobs:
           POSTGRES_USER: ocoffee
           POSTGRES_PASSWORD: ocoffee123
           POSTGRES_DB: ocoffee
-          PG_URL: postgresql://ocoffee:ocoffee123@localhost:5432/ocoffee
         run: |
+          # Utiliser le réseau créé par docker-compose (format: <dossier>_<nom-reseau>)
+          NETWORK_NAME="ocoffee_ocoffee-network"
+          
+          # Vérifier que le réseau existe, sinon le créer
+          if ! docker network inspect $NETWORK_NAME >/dev/null 2>&1; then
+            echo "Création du réseau $NETWORK_NAME"
+            docker network create $NETWORK_NAME
+            # Connecter PostgreSQL au réseau
+            docker network connect $NETWORK_NAME ocoffee-db || true
+          fi
+          
+          # Lancer l'application sur le même réseau que PostgreSQL
           docker run -d --name test-app \
-            --network host \
+            --network $NETWORK_NAME \
             -e PORT=3000 \
-            -e PG_URL=postgresql://ocoffee:ocoffee123@localhost:5432/ocoffee \
+            -e PG_URL=postgresql://ocoffee:ocoffee123@postgres:5432/ocoffee \
+            -p 3000:3000 \
             ocoffee-app:test
           
-          sleep 10
+          # Attendre que l'application démarre
+          echo "⏳ Attente du démarrage de l'application (20 secondes)..."
+          sleep 20
           
-          # Test si l'application répond
-          curl -f http://localhost:3000 || exit 1
-          
-          echo "✅ Application répond correctement"
+          # Vérifier les logs pour diagnostiquer
+          echo "📋 Logs de l'application:"
           docker logs test-app
           
-          # Nettoyage
+          # Vérifier le statut du conteneur
+          echo "📊 Statut des conteneurs:"
+          docker ps -a | grep -E "(test-app|ocoffee)"
+          
+          # Vérifier que le port est bien exposé
+          echo "🔍 Vérification du port 3000:"
+          netstat -tlnp 2>/dev/null | grep 3000 || ss -tlnp 2>/dev/null | grep 3000 || echo "Port 3000 non trouvé"
+          
+          # Test si l'application répond
+          echo "🧪 Test de connexion à l'application..."
+          SUCCESS=false
+          for i in {1..5}; do
+            if curl -f http://localhost:3000 >/dev/null 2>&1; then
+              echo "✅ Application répond correctement"
+              SUCCESS=true
+              break
+            fi
+            echo "Tentative $i/5 échouée, nouvelle tentative dans 5 secondes..."
+            sleep 5
+          done
+          
+          # Si le test a échoué
+          if [ "$SUCCESS" != "true" ]; then
+            echo "❌ L'application ne répond pas après 5 tentatives"
+            docker logs test-app
+            exit 1
+          fi
+          
+      - name: Cleanup
+        if: always()
+        run: |
           docker stop test-app || true
           docker rm test-app || true
-          docker compose -f docker-compose.yml down -v || true
+          POSTGRES_USER=ocoffee POSTGRES_PASSWORD=ocoffee123 POSTGRES_DB=ocoffee docker compose -f docker-compose.yml down -v || true
