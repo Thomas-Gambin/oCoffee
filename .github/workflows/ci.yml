@@ -103,7 +103,7 @@ jobs:
 
       - name: Start PostgreSQL with Docker Compose
         run: |
-          docker-compose -f docker-compose.yml up -d postgres
+          docker compose -f docker-compose.yml up -d postgres
           sleep 10
 
       - name: Test application container
@@ -131,4 +131,4 @@ jobs:
           # Nettoyage
           docker stop test-app || true
           docker rm test-app || true
-          docker-compose -f docker-compose.yml down -v || true
+          docker compose -f docker-compose.yml down -v || true
