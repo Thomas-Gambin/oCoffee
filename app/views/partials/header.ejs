@@ -1,37 +1,88 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
-    <title>o'Coffee</title>
+    <title>O'Coffee</title>
     <link rel="icon" href="/static/00.assets/logo.svg" type="image/svg">
-    <!-- Custom styles for this template -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
     <link href="/static/css/style.css" rel="stylesheet">
-    <link href="/static/css/reset.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
-
-<body>
-    <header>
-        <div class="background_image"></div>
-        <a href="/" class="logo-link">
-            <img src="/static/00.assets/logo.svg" alt="oCofee Logo" class="logo">
-        </a>
-        <nav class="navbar">
-            <div class="nav-links">
-                <ul>
-                    <li><a href="/" class="titre">O'Coffee</a></li>
-                    <li><a href="/">Accueil</a></li>
-                    <li><a href="/produits">Notre catalogue</a></li>
-                    <li><a href="/a-propos">A propos</a></li>
-                    <li><a href="/contact">Contact</a></li>
+<body class="flex min-h-screen flex-col">
+    <header class="h-16 border-b border-neutral-200 bg-white transition-colors duration-200">
+        <div class="page-shell flex h-full items-center justify-between">
+            <a href="/" class="shrink-0 transition-transform duration-200 hover:scale-105">
+                <img src="/static/00.assets/logo.svg" alt="O'Coffee" class="h-10 w-auto lg:h-12">
+            </a>
+            <button type="button"
+                class="menu-hamburger inline-flex items-center justify-center p-2 text-ocoffee-brown-dark transition-colors hover:text-ocoffee-amber focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ocoffee-amber focus-visible:ring-offset-2 lg:hidden"
+                aria-label="Ouvrir le menu" aria-expanded="false">
+                <i data-lucide="menu" class="menu-icon h-6 w-6"></i>
+                <i data-lucide="x" class="close-icon hidden h-6 w-6"></i>
+            </button>
+            <nav class="hidden lg:block">
+                <ul class="flex items-center gap-8 text-base font-medium">
+                    <li>
+                        <a href="/" class="inline-flex items-center gap-2 rounded px-2 py-1.5 text-ocoffee-brown-dark transition-colors hover:bg-ocoffee-bg hover:text-ocoffee-amber focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ocoffee-amber focus-visible:ring-offset-2">
+                            <i data-lucide="home" class="h-4 w-4"></i>
+                            <span>Accueil</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/produits" class="inline-flex items-center gap-2 rounded px-2 py-1.5 text-ocoffee-brown-dark transition-colors hover:bg-ocoffee-bg hover:text-ocoffee-amber focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ocoffee-amber focus-visible:ring-offset-2">
+                            <i data-lucide="package" class="h-4 w-4"></i>
+                            <span>Notre catalogue</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/a-propos" class="inline-flex items-center gap-2 rounded px-2 py-1.5 text-ocoffee-brown-dark transition-colors hover:bg-ocoffee-bg hover:text-ocoffee-amber focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ocoffee-amber focus-visible:ring-offset-2">
+                            <i data-lucide="info" class="h-4 w-4"></i>
+                            <span>A propos</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/contact" class="inline-flex items-center gap-2 rounded px-2 py-1.5 text-ocoffee-brown-dark transition-colors hover:bg-ocoffee-bg hover:text-ocoffee-amber focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ocoffee-amber focus-visible:ring-offset-2">
+                            <i data-lucide="mail" class="h-4 w-4"></i>
+                            <span>Contact</span>
+                        </a>
+                    </li>
                 </ul>
-            </div>
-            <img src="/static/00.assets/humberger.png" alt="menu-deroulant" class="menu-hamburger">
+            </nav>
+        </div>
+        <nav class="nav-links absolute left-0 right-0 top-16 z-10 hidden border-b border-neutral-200 bg-white py-4 shadow-sm lg:hidden">
+            <ul class="page-shell flex flex-col gap-1 text-base font-medium">
+                <li>
+                    <a href="/" class="flex items-center gap-3 rounded px-3 py-2.5 text-ocoffee-brown-dark transition-colors hover:bg-ocoffee-bg hover:text-ocoffee-amber focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ocoffee-amber">
+                        <i data-lucide="home" class="h-5 w-5"></i>
+                        <span>Accueil</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/produits" class="flex items-center gap-3 rounded px-3 py-2.5 text-ocoffee-brown-dark transition-colors hover:bg-ocoffee-bg hover:text-ocoffee-amber focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ocoffee-amber">
+                        <i data-lucide="package" class="h-5 w-5"></i>
+                        <span>Notre catalogue</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/a-propos" class="flex items-center gap-3 rounded px-3 py-2.5 text-ocoffee-brown-dark transition-colors hover:bg-ocoffee-bg hover:text-ocoffee-amber focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ocoffee-amber">
+                        <i data-lucide="info" class="h-5 w-5"></i>
+                        <span>A propos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/contact" class="flex items-center gap-3 rounded px-3 py-2.5 text-ocoffee-brown-dark transition-colors hover:bg-ocoffee-bg hover:text-ocoffee-amber focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ocoffee-amber">
+                        <i data-lucide="mail" class="h-5 w-5"></i>
+                        <span>Contact</span>
+                    </a>
+                </li>
+            </ul>
         </nav>
     </header>

@@ -1,7 +1,10 @@
-// Test map
-
 document.addEventListener('DOMContentLoaded', () => {
-    // Je créais la map
+    const mapContainer = document.getElementById('map');
+
+    if (!mapContainer || typeof L === 'undefined') {
+        return;
+    }
+
     const map = L.map('map').setView([26.357896, 127.783809], 20);
 
     L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {

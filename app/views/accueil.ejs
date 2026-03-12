@@ -1,43 +1,47 @@
 <%- include ('partials/header'); %>
-    <main>
-        <section class="presentation">
-            <div class="container_presentation">
-                <div id="presentation_left">
-                    <h1>Bienvenue sur <span>O'Coffee</span></h1>
-                    <article class="presentation_article">Plongez dans <span>l'univers envoûtant</span> de notre
-                        boutique de café, un véritable <span>havre de paix</span> où chaque tasse est une
-                        <span>invitation à découvrir</span> des <span>saveurs uniques</span>. Fondée par Jean et Jacques
-                        Pepper, deux frères <span>passionnés</span>, notre boutique célèbre <span>l'art du café</span>
-                        dans une <span>ambiance chaleureuse et raffinée</span>. Dès que vous franchissez notre porte,
-                        vous êtes accueilli par une <span>symphonie d'arômes envoûtants</span> qui <span>éveilleront
-                            tous vos sens</span>.
-                    </article>
-                    <button><a href="/produits">Voir le catalogue</a></button>
-                </div>
+<main class="flex-1">
+    <section class="flex min-h-[320px] items-center justify-center bg-ocoffee-banner bg-cover bg-center px-4 py-16" style="background-image: linear-gradient(rgba(112,54,7,0.35), rgba(112,54,7,0.35)), url('/static/cafe3.png');">
+        <div class="max-w-2xl text-center" data-aos="fade-up">
+            <h1 class="font-display text-4xl font-semibold text-white drop-shadow-md sm:text-5xl">
+                Bienvenue sur O'Coffee
+            </h1>
+            <p class="mt-4 text-lg text-white/95">
+                L'art du café, des saveurs uniques et une ambiance chaleureuse.
+            </p>
+            <div class="mt-8">
+                <a href="/produits" class="btn-primary inline-flex border-white bg-white/90 text-ocoffee-title hover:bg-white hover:text-ocoffee-brown">
+                    <span>Voir le catalogue</span>
+                    <i data-lucide="arrow-right" class="h-4 w-4"></i>
+                </a>
             </div>
-        </section>
-        <section class="nouveaute">
-            <div class="container_nouveaute">
-                <h1>Nos dernières saveurs</h1>
-            </div>
-            <div class="container_produits">
-                <% coffees.forEach(coffee=> { %>
-                    <div class="container_produit">
-                        <h2>
+        </div>
+    </section>
+    <section class="page-section bg-ocoffee-bg">
+        <div class="page-shell">
+            <h2 class="section-title mb-10" data-aos="fade-up">Nos dernières saveurs</h2>
+            <div class="product-grid">
+                <% coffees.forEach((coffee, index)=> { %>
+                <article class="product-card" data-aos="fade-up" data-aos-delay="<%= index * 80 %>">
+                    <img class="product-card-image" src="/static/00.assets/coffees/<%= coffee.reference %>.webp" alt="<%= coffee.name %>">
+                    <div class="flex flex-1 flex-col gap-3 p-5 text-left">
+                        <h2 class="font-display text-xl font-semibold text-ocoffee-amber">
                             <%= coffee.name %>
                         </h2>
-                        <img src="/static/00.assets/coffees/<%= coffee.reference %>.webp" alt="<%= coffee.name %>">
-                        <p>
+                        <p class="line-clamp-2 text-sm leading-relaxed text-ocoffee-text-muted">
                             <%= coffee.description %>
                         </p>
-                        <div class="prix">
-                            <%= coffee.price %>
+                        <div class="mt-auto flex items-center justify-between pt-2">
+                            <span class="font-bold text-ocoffee-price"><%= coffee.price %> €</span>
+                            <a href="/produit/<%= coffee.id %>" class="btn-primary text-sm">
+                                <span>Découvrir</span>
+                                <i data-lucide="chevron-right" class="h-3.5 w-3.5"></i>
+                            </a>
                         </div>
-                        <button><a href="/produit/<%= coffee.id %>">Découvrir</a></button>
                     </div>
-                    <% }) %>
+                </article>
+                <% }) %>
             </div>
-        </section>
-
-    </main>
-    <%- include ('partials/footer'); %>
+        </div>
+    </section>
+</main>
+<%- include ('partials/footer'); %>
