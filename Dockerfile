@@ -13,6 +13,9 @@ RUN npm install
 # Copier le reste des fichiers de l'application
 COPY . .
 
+# Générer la feuille de style Tailwind
+RUN npm run build:css
+
 # Exposer le port de l'application
 EXPOSE 3000
 

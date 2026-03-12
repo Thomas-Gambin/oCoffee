@@ -57,7 +57,7 @@ Le projet est maintenant dockerisé et peut être lancé facilement avec Docker 
    ADMINER_PORT=8080
    ```
 
-   ⚠️ **Sécurité** : 
+   **Sécurité** : 
    - Ne commitez **JAMAIS** le fichier `.env` (il est déjà dans `.gitignore`)
    - Utilisez des mots de passe forts et uniques
    - En production, utilisez un gestionnaire de secrets (Docker Secrets, Kubernetes Secrets, etc.)
@@ -122,15 +122,10 @@ Le projet inclut des workflows GitHub Actions pour automatiser les tests et le d
    - **Build Docker Image** : Construit l'image Docker et la push vers GitHub Container Registry
    - **Test Docker Compose** : Teste l'application avec Docker Compose
 
-2. **`.github/workflows/deploy.yml`** : Déploiement automatique
-   - Se déclenche sur les push vers `main`/`master` ou les tags `v*`
-   - Build et push l'image Docker vers GitHub Container Registry
-
 ### Déclencheurs :
 
 - **Push** sur les branches `main`, `master`, `dev` → Exécute le pipeline CI
 - **Pull Request** sur `main`, `master`, `dev` → Exécute le pipeline CI (sans push d'image)
-- **Push** sur `main`/`master` ou **tag** `v*` → Déploiement automatique
 
 ### Images Docker :
 

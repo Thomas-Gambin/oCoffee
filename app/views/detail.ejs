@@ -1,37 +1,40 @@
 <%- include ('partials/header'); %>
-    <main>
-        <div class="detail_background">
-            <section class="product-description">
-                <div class="image">
-                    <img src="/static/00.assets/coffees/<%= coffee.reference %>.webp" alt="<%= coffee.name %>">
-                </div>
-                <div class="description">
-                    <h2>
-                        <%= coffee.name %>
-                    </h2>
-                    <ul>
-                        <li><strong>Description :</strong>
-                            <%= coffee.description %>
-                        </li>
-                        <li><strong>Origine :</strong>
-                            <%= coffee.origin %>
-                        </li>
-                        <li><strong>Prix au kilo :</strong>
-                            <%= coffee.price %> €
-                        </li>
-                        <li><strong>Caractéristique principale :</strong>
-                            <%= coffee.category %>
-                        </li>
-                        <li><strong>Disponible :</strong>
-                            <% if (coffee.available===true) { %>
-                                <strong><span style="color: #0a5d11;">Oui ✅</span></strong>
-                                <% } else { %>
-                                    <strong><span style="color: #b30000;">Non ❌</span></strong>
-                                    <% } %>
-                        </li>
-                    </ul>
-                </div>
-            </section>
+<main class="flex-1 bg-ocoffee-bg py-12">
+    <section class="page-shell grid max-w-5xl gap-10 md:grid-cols-[1fr_1.1fr]" data-aos="fade-up">
+        <div class="overflow-hidden rounded-lg" data-aos="fade-right">
+            <img class="aspect-square w-full object-cover" src="/static/00.assets/coffees/<%= coffee.reference %>.webp" alt="<%= coffee.name %>">
         </div>
-    </main>
-    <%- include ('partials/footer'); %>
+        <div class="flex flex-col gap-6" data-aos="fade-left">
+            <h1 class="font-display text-3xl font-semibold text-ocoffee-amber sm:text-4xl"><%= coffee.name %></h1>
+            <dl class="flex flex-col gap-4 text-base">
+                <div>
+                    <dt class="text-sm font-semibold uppercase tracking-wider text-ocoffee-amber">Description</dt>
+                    <dd class="mt-1 text-ocoffee-text-muted"><%= coffee.description %></dd>
+                </div>
+                <div>
+                    <dt class="text-sm font-semibold uppercase tracking-wider text-ocoffee-amber">Origine</dt>
+                    <dd class="mt-1 text-ocoffee-text-muted"><%= coffee.origin %></dd>
+                </div>
+                <div>
+                    <dt class="text-sm font-semibold uppercase tracking-wider text-ocoffee-amber">Prix au kilo</dt>
+                    <dd class="mt-1 text-ocoffee-text-muted"><%= coffee.price %> €</dd>
+                </div>
+                <div>
+                    <dt class="text-sm font-semibold uppercase tracking-wider text-ocoffee-amber">Caractéristique principale</dt>
+                    <dd class="mt-1 text-ocoffee-text-muted"><%= coffee.category %></dd>
+                </div>
+                <div>
+                    <dt class="text-sm font-semibold uppercase tracking-wider text-ocoffee-amber">Disponible</dt>
+                    <dd class="mt-1">
+                        <% if (coffee.available===true) { %>
+                        <span class="font-semibold text-ocoffee-success">Oui</span>
+                        <% } else { %>
+                        <span class="font-semibold text-ocoffee-error">Non</span>
+                        <% } %>
+                    </dd>
+                </div>
+            </dl>
+        </div>
+    </section>
+</main>
+<%- include ('partials/footer'); %>

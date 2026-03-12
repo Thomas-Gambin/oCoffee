@@ -1,36 +1,57 @@
-// Alerte projet
-window.onload = function () {
-    const firstVisitDate = localStorage.getItem('firstVisitDate');
+document.addEventListener("DOMContentLoaded", () => {
+    const firstVisitDate = localStorage.getItem("firstVisitDate");
+    const dayInMs = 24 * 60 * 60 * 1000;
 
-    if (!firstVisitDate || (new Date() - new Date(firstVisitDate)) > 24 * 60 * 60 * 1000) {
+    if (!firstVisitDate || Date.now() - new Date(firstVisitDate).getTime() > dayInMs) {
         alert("Ce site est un projet qui n'a pas de but lucratif.");
-
-        localStorage.setItem('firstVisitDate', new Date().toString());
+        localStorage.setItem("firstVisitDate", new Date().toString());
     }
-};
 
-// Menu Hamburger
-const menuHamburger = document.querySelector(".menu-hamburger")
-const navLinks = document.querySelector(".nav-links")
+    if (window.AOS) {
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        window.AOS.init({
+            duration: 500,
+            once: true,
+            offset: 50,
+            delay: 0,
+            easing: "ease-out-cubic",
+            disable: prefersReducedMotion,
+        });
+    }
 
-menuHamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('mobile-menu')
-})
+    const menuHamburger = document.querySelector(".menu-hamburger");
+    const navLinks = document.querySelector(".nav-links");
 
-// Voir tous les produits
-document.getElementById('voir-tous-btn').addEventListener('click', function () {
-    // On séléctionne ce que l'on veut
-    const produits = document.querySelectorAll('.container_produits')
-    const produitsFull = document.querySelectorAll('.container_produits-full')
-    // On cache les 3 produits
-    produits.forEach(produit => {
-        produit.style.display = 'none'
-    });
-    // On affiche tous les produits
-    produitsFull.forEach(produit => {
-        produit.style.display = 'flex'
-    });
+    if (menuHamburger && navLinks) {
+        menuHamburger.addEventListener("click", () => {
+            const isExpanded = menuHamburger.getAttribute("aria-expanded") === "true";
+            menuHamburger.setAttribute("aria-expanded", String(!isExpanded));
+            menuHamburger.setAttribute("aria-label", isExpanded ? "Ouvrir le menu" : "Fermer le menu");
+            const menuIcon = menuHamburger.querySelector(".menu-icon");
+            const closeIcon = menuHamburger.querySelector(".close-icon");
+            if (menuIcon && closeIcon) {
+                menuIcon.classList.toggle("hidden", !isExpanded);
+                closeIcon.classList.toggle("hidden", isExpanded);
+            }
+            navLinks.classList.toggle("hidden");
+            if (window.lucide) window.lucide.createIcons();
+        });
+    }
 
-    document.getElementById('voir-tous-btn').style.display = 'none';
+    const seeAllButton = document.getElementById("voir-tous-btn");
+    const previewCatalog = document.getElementById("catalog-preview");
+    const fullCatalog = document.getElementById("catalog-full");
+
+    if (seeAllButton && previewCatalog && fullCatalog) {
+        seeAllButton.addEventListener("click", () => {
+            previewCatalog.classList.add("hidden");
+            fullCatalog.classList.remove("hidden");
+            seeAllButton.classList.add("hidden");
+            if (window.AOS) window.AOS.refresh();
+        });
+    }
+
+    if (window.lucide) {
+        window.lucide.createIcons();
+    }
 });
-

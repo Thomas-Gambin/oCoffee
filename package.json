@@ -8,6 +8,7 @@
     "doc": "docs"
   },
   "scripts": {
+    "build:css": "tailwindcss -i ./src/input.css -o ./public/static/css/style.css --minify",
     "start": "node app.js",
     "dev": "node --watch app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -20,6 +21,14 @@
     "ejs": "^3.1.10",
     "express": "^4.21.1",
     "leaflet": "^1.9.4",
+    "lucide": "^0.577.0",
     "pg": "^8.13.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.11",
+    "autoprefixer": "^10.4.27",
+    "postcss": "^8.5.8",
+    "tailwindcss": "^3.4.17",
+    "tailwindcss-animate": "^1.0.7"
   }
 }

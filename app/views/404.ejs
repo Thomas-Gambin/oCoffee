@@ -1,20 +1,15 @@
 <%- include ('partials/header'); %>
-    <main>
-        <section class="about">
-            <div class="proprio_image">
-                <img src="/static/404.webp" alt="erreur 404">
-            </div>
-            <div class="not_found-text">
-                <article>
-                    <h1>Cette page n'est pas disponible</h1>
-                    <p>
-                        Oh, tu es sur une page qui n'existe pas. <br><br> Tu peux retourner à la page d'accueil en
-                        cliquant sur le bouton ci-dessous, ou tu peux rester ici et te prendre un petit
-                        café !<br><br>
-                        <button><a href="/">Accueil</a></button>
-                    </p>
-                </article>
-            </div>
-        </section>
-    </main>
-    <%- include ('partials/footer'); %>
+<main class="flex flex-1 flex-col items-center justify-center bg-ocoffee-bg px-4 py-24">
+    <section class="flex max-w-md flex-col items-center text-center" data-aos="fade-up">
+        <img src="/static/404.webp" alt="" class="mb-8 h-40 w-auto object-contain" aria-hidden="true">
+        <h1 class="section-title mb-4">Cette page n'existe pas</h1>
+        <p class="mb-8 text-base leading-7 text-ocoffee-text-muted">
+            Tu peux retourner à l'accueil en cliquant sur le bouton ci-dessous, ou rester ici et te prendre un café.
+        </p>
+        <a href="/" class="btn-primary">
+            <span>Retour à l'accueil</span>
+            <i data-lucide="home" class="h-4 w-4"></i>
+        </a>
+    </section>
+</main>
+<%- include ('partials/footer'); %>
