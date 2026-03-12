@@ -1,5 +1,4 @@
 services:
-  # Service PostgreSQL
   postgres:
     image: postgres:16-alpine
     container_name: ocoffee-db
@@ -7,8 +6,6 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB}
-    ports:
-      - "${POSTGRES_PORT:-5432}:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./create_db.sql:/docker-entrypoint-initdb.d/init.sql
@@ -20,7 +17,6 @@ services:
     networks:
       - ocoffee-network
 
-  # Service Application Node.js
   app:
     build:
       context: .
@@ -29,8 +25,6 @@ services:
     environment:
       PORT: ${PORT:-3000}
       PG_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
-    ports:
-      - "${PORT:-3000}:3000"
     depends_on:
       postgres:
         condition: service_healthy
@@ -39,7 +33,14 @@ services:
       - ./app/views:/app/app/views
     networks:
       - ocoffee-network
+      - proxy
     restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=proxy
+      - traefik.http.routers.ocoffee.rule=Host(`www.ocoffee.thomas-gambin.com`) || Host(`ocoffee.thomas-gambin.com`)
+      - traefik.http.routers.ocoffee.entrypoints=web
+      - traefik.http.services.ocoffee.loadbalancer.server.port=3000
 
 volumes:
   postgres_data:
@@ -47,3 +48,5 @@ volumes:
 networks:
   ocoffee-network:
     driver: bridge
+  proxy:
+    external: true
