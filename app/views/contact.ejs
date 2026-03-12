@@ -1,21 +1,31 @@
 <%- include ('partials/header'); %>
-    <main>
-        <section class="about">
-            <div id="map"></div>
-            <div class="about_text">
-                <article class="article_contact">
-                    <div class="contact">
-                        <h1>
-                            Nous contacter
-                        </h1>
-                        <ul>
-                            <li><strong>Téléphone : </strong>06 XX XX XX XX</li>
-                            <li><strong>Adresse : </strong>12 Allée des Wayne</li>
-                            <li><strong>Ville : </strong>83000 Gotham City</li>
-                            <li><strong>Mail : </strong>bruce.wayne@gmaaaail.com</li>
-                        </ul>
-                </article>
-            </div>
-        </section>
-    </main>
-    <%- include ('partials/footer'); %>
+<main class="flex-1 bg-ocoffee-bg">
+    <section class="page-shell grid gap-8 py-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+        <div id="map" class="h-[50vh] w-full rounded-lg lg:h-[70vh]" data-aos="fade-right"></div>
+        <div class="flex flex-col gap-6" data-aos="fade-left" data-aos-delay="100">
+            <h1 class="section-title">Nous contacter</h1>
+            <p class="text-base leading-7 text-ocoffee-text-muted">
+                Passez nous voir, appelez-nous ou écrivez-nous. Nous répondrons autour d'un café.
+            </p>
+            <ul class="list-none space-y-4 p-0 text-base">
+                <li class="flex items-start gap-3">
+                    <i data-lucide="phone" class="mt-0.5 h-5 w-5 shrink-0 text-ocoffee-amber"></i>
+                    <span><strong class="text-ocoffee-amber">Téléphone :</strong> 06 XX XX XX XX</span>
+                </li>
+                <li class="flex items-start gap-3">
+                    <i data-lucide="map-pin" class="mt-0.5 h-5 w-5 shrink-0 text-ocoffee-amber"></i>
+                    <span><strong class="text-ocoffee-amber">Adresse :</strong> 12 Allée des Wayne</span>
+                </li>
+                <li class="flex items-start gap-3">
+                    <i data-lucide="building-2" class="mt-0.5 h-5 w-5 shrink-0 text-ocoffee-amber"></i>
+                    <span><strong class="text-ocoffee-amber">Ville :</strong> 83000 Gotham City</span>
+                </li>
+                <li class="flex items-start gap-3">
+                    <i data-lucide="mail" class="mt-0.5 h-5 w-5 shrink-0 text-ocoffee-amber"></i>
+                    <span><strong class="text-ocoffee-amber">Mail :</strong> bruce.wayne@gmaaaail.com</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+</main>
+<%- include ('partials/footer'); %>

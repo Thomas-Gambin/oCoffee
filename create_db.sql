@@ -1,18 +1,20 @@
-DROP TABLE IF EXISTS "coffees";
+-- Suppression de la table si elle existe
+DROP TABLE IF EXISTS coffees;
 
-CREATE TABLE IF NOT EXISTS "coffees" (
-    "id" SERIAL PRIMARY KEY,
-    "name" TEXT NOT NULL,
-    "description" TEXT,
-    "reference" VARCHAR(20) NOT NULL,
-    "origin" VARCHAR(100),
-    "price" DECIMAL(10, 2),
-    "category" TEXT,
-    "available" BOOLEAN
+-- Création de la table
+CREATE TABLE coffees (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    description TEXT,
+    reference VARCHAR(20) NOT NULL,
+    origin VARCHAR(100),
+    price DECIMAL(10, 2),
+    category TEXT,
+    available BOOLEAN
 );
 
--- Insertion des données dans la table `coffees`
-INSERT INTO coffees ("id", "name", "description", "reference", "origin", "price", "category", "available")
+-- Insertion des données dans la table coffees
+INSERT INTO coffees (id, name, description, reference, origin, price, category, available)
 VALUES
 (1, 'Espresso', 'Café fort et concentré préparé en faisant passer de l''eau chaude à travers du café finement moulu.', '100955890', 'Italie', 20.99, 'Corsé', TRUE),
 (2, 'Columbian', 'Café moyennement corsé avec une acidité vive et une saveur riche.', '100955894', 'Colombie', 18.75, 'Acide', TRUE),

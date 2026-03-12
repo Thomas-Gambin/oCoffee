@@ -18,6 +18,6 @@ app.use(express.static('public'));
 app.use(router);
 app.use(error404Middleware);
 // on lance le serveur
-app.listen(PORT, () => {
-    console.log(`Server started on http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server started on http://0.0.0.0:${PORT}`);
 });
