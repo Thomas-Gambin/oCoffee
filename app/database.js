@@ -1,10 +1,7 @@
-// 1. require le module
 import pg from 'pg';
 
-// 2. Client connecté (assigné après connexion réussie)
 let client = null;
 
-// 3. Fonction pour connecter avec retry (nouveau client à chaque tentative)
 async function connectWithRetry(retries = 5, delay = 2000) {
     for (let i = 0; i < retries; i++) {
         const attemptClient = new pg.Client(process.env.PG_URL);
@@ -27,8 +24,6 @@ async function connectWithRetry(retries = 5, delay = 2000) {
     }
 }
 
-// 4. Connecter le client
 await connectWithRetry();
 
-// 5. Exporter le client connecté
 export default client;
