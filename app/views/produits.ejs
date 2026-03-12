@@ -1,11 +1,11 @@
 <%- include ('partials/header'); %>
 <main class="flex-1 bg-ocoffee-bg pb-16">
-    <div class="page-shell py-10">
+    <div class="page-shell page-shell--wide py-10">
         <h1 class="section-title mb-10" data-aos="fade-up">Notre catalogue</h1>
-        <div class="flex flex-col gap-8 lg:flex-row lg:items-start">
-            <aside class="w-full shrink-0 rounded-lg border border-neutral-200 bg-neutral-50 p-5 lg:sticky lg:top-24 lg:w-60" data-aos="fade-right">
-                <h2 class="font-display text-lg font-semibold text-ocoffee-title">Catégories</h2>
-                <p class="mt-2 text-sm text-ocoffee-text-muted">
+        <div class="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-10">
+            <aside class="catalog-sidebar" data-aos="fade-right">
+                <h2 class="catalog-sidebar-title">Catégories</h2>
+                <p class="catalog-sidebar-desc">
                     Filtrer par catégorie ou afficher tout le catalogue.
                 </p>
                 <form class="mt-5" action="/produits" method="GET">
@@ -13,14 +13,14 @@
                         <legend class="sr-only">Choisir une catégorie</legend>
                         <div class="flex flex-col gap-1">
                             <% allCategories.forEach(category=> { %>
-                            <label class="flex cursor-pointer items-center gap-2 rounded px-2 py-1.5 text-sm hover:bg-ocoffee-dropdown-hover">
+                            <label class="flex cursor-pointer items-center gap-2 rounded-lg px-2.5 py-2 text-sm hover:bg-ocoffee-dropdown-hover">
                                 <input type="radio" name="category" value="<%= category.category %>" class="h-3.5 w-3.5 border-ocoffee-brown text-ocoffee-amber focus:ring-ocoffee-amber">
                                 <span><%= category.category %></span>
                             </label>
                             <% }) %>
                         </div>
                     </fieldset>
-                    <div class="mt-4 flex flex-col gap-2">
+                    <div class="mt-5 flex flex-col gap-2">
                         <button type="submit" class="btn-primary w-full justify-center text-sm">
                             <span>Valider</span>
                             <i data-lucide="check" class="h-3.5 w-3.5"></i>
